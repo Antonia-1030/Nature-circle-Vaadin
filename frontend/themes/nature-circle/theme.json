@@ -1,0 +1,9 @@
+{
+  "lumoImports" : [ "typography", "color", "spacing", "badge", "utility" ],
+  "assets" : {
+    "@fontsource/aclonica" : {
+      "*.css" : "@fontsource/aclonica",
+      "files/*" : "@fontsource/aclonica/files"
+    }
+  }
+}
