@@ -1,0 +1,6 @@
+2024-02-17 10:28:30.890544+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user (id bigint not null, version integer not null, date_of_birth date, email varchar(255), first_name varchar(255), last_name varchar(255), phone varchar(255), role varchar(255), primary key (id))"; expected "identifier"; SQL statement:
+create table user (id bigint not null, version integer not null, date_of_birth date, email varchar(255), first_name varchar(255), last_name varchar(255), phone varchar(255), role varchar(255), primary key (id)) [42001-224]
+2024-02-17 10:28:31.556546+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select count(*) from [*]user sp1_0"; expected "identifier"; SQL statement:
+select count(*) from user sp1_0 [42001-224]
