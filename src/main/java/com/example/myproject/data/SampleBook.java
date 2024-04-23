@@ -1,9 +1,9 @@
 package com.example.myproject.data;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Lob;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class SampleBook extends AbstractEntity {
@@ -12,10 +12,13 @@ public class SampleBook extends AbstractEntity {
     @Column(length = 1000000)
     private byte[] image;
     private String name;
-    private String author;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Event> event;
     private LocalDate publicationDate;
-    private Integer pages;
     private String isbn;
+
+    private Double price;
 
     public byte[] getImage() {
         return image;
@@ -29,23 +32,19 @@ public class SampleBook extends AbstractEntity {
     public void setName(String name) {
         this.name = name;
     }
-    public String getAuthor() {
-        return author;
+
+    public List<Event> getEvent() {
+        return event;
     }
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setEvent(List<Event> event) {
+        this.event = event;
     }
+
     public LocalDate getPublicationDate() {
         return publicationDate;
     }
     public void setPublicationDate(LocalDate publicationDate) {
         this.publicationDate = publicationDate;
-    }
-    public Integer getPages() {
-        return pages;
-    }
-    public void setPages(Integer pages) {
-        this.pages = pages;
     }
     public String getIsbn() {
         return isbn;
@@ -53,5 +52,8 @@ public class SampleBook extends AbstractEntity {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-
+    public Double getPrice(){return price;}
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 }

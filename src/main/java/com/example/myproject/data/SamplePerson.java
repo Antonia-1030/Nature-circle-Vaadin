@@ -1,22 +1,31 @@
 package com.example.myproject.data;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Lob;
 import jakarta.validation.constraints.Email;
 import java.time.LocalDate;
 
 @Entity
 public class SamplePerson extends AbstractEntity {
 
+    //@Lob
+    //@Column(length = 1000000)
+    //private byte[] image;
     private String firstName;
     private String lastName;
     @Email
     private String email;
     private String phone;
     private LocalDate dateOfBirth;
-    private String occupation;
     private String role;
-    private boolean important;
 
+    //public byte[] getImage() {
+        //return image;
+    //}
+    //public void setImage(byte[] image) {
+      //  this.image = image;
+    //}
     public String getFirstName() {
         return firstName;
     }
@@ -47,23 +56,11 @@ public class SamplePerson extends AbstractEntity {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-    public String getOccupation() {
-        return occupation;
-    }
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
     public String getRole() {
         return role;
     }
     public void setRole(String role) {
         this.role = role;
-    }
-    public boolean isImportant() {
-        return important;
-    }
-    public void setImportant(boolean important) {
-        this.important = important;
     }
 
 }

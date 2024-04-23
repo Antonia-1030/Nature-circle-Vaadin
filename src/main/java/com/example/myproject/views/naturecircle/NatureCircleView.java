@@ -46,15 +46,15 @@ public class NatureCircleView extends Composite<VerticalLayout> {
         formLayout3Col.setResponsiveSteps(new ResponsiveStep("0", 1), new ResponsiveStep("250px", 2),
                 new ResponsiveStep("500px", 3));
         textMedium.setText(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+                "The Earth is our home and we must protect it!");
         textMedium.setWidth("100%");
         textMedium.getStyle().set("font-size", "var(--lumo-font-size-m)");
         textMedium2.setText(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+                "We at Nature circle believe change comes with small but many steps. By buying our products you help save nature.");
         textMedium2.setWidth("100%");
         textMedium2.getStyle().set("font-size", "var(--lumo-font-size-m)");
         textMedium3.setText(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+                "We fund many wildlife and nature-preserving companies by giving half our profits to support their cause.");
         textMedium3.setWidth("100%");
         textMedium3.getStyle().set("font-size", "var(--lumo-font-size-m)");
         buttonPrimary.setText("Join us");

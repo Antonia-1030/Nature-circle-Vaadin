@@ -1,6 +1,7 @@
 package com.example.myproject.views.products;
 
 import com.example.myproject.data.SampleBook;
+import com.example.myproject.data.SampleBookRepository;
 import com.example.myproject.services.SampleBookService;
 import com.example.myproject.views.MainLayout;
 import com.vaadin.flow.component.UI;
@@ -32,6 +33,7 @@ import com.vaadin.flow.server.StreamResource;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 import java.util.Base64;
 import java.util.Optional;
 import org.springframework.data.domain.PageRequest;
@@ -49,13 +51,13 @@ public class ProductsView extends Div implements BeforeEnterObserver {
     private Upload image;
     private Image imagePreview;
     private TextField name;
-    private TextField author;
     private DatePicker publicationDate;
-    private TextField pages;
     private TextField isbn;
+    private TextField price;
 
     private final Button cancel = new Button("Cancel");
     private final Button save = new Button("Save");
+	private final Button delete = new Button("Delete");
 
     private final BeanValidationBinder<SampleBook> binder;
 
@@ -87,10 +89,9 @@ public class ProductsView extends Div implements BeforeEnterObserver {
         grid.addColumn(imageRenderer).setHeader("Image").setWidth("68px").setFlexGrow(0);
 
         grid.addColumn("name").setAutoWidth(true);
-        grid.addColumn("author").setAutoWidth(true);
         grid.addColumn("publicationDate").setAutoWidth(true);
-        grid.addColumn("pages").setAutoWidth(true);
         grid.addColumn("isbn").setAutoWidth(true);
+        grid.addColumn("price").setAutoWidth(true);
         grid.setItems(query -> sampleBookService.list(
                 PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)))
                 .stream());
@@ -110,7 +111,7 @@ public class ProductsView extends Div implements BeforeEnterObserver {
         binder = new BeanValidationBinder<>(SampleBook.class);
 
         // Bind fields. This is where you'd define e.g. validation rules
-        binder.forField(pages).withConverter(new StringToIntegerConverter("Only numbers are allowed")).bind("pages");
+        //binder.forField(pages).withConverter(new StringToIntegerConverter("Only numbers are allowed")).bind("pages");
 
         binder.bindInstanceFields(this);
 
@@ -119,6 +120,15 @@ public class ProductsView extends Div implements BeforeEnterObserver {
         cancel.addClickListener(e -> {
             clearForm();
             refreshGrid();
+        });
+
+        delete.addClickListener(e -> {
+            if (this.sampleBook != null) {
+                sampleBookService.delete(this.sampleBook.getId());
+                refreshGrid();
+            } else {
+                Notification.show("No product selected for deletion", 3000, Notification.Position.MIDDLE);
+            }
         });
 
         save.addClickListener(e -> {
@@ -177,11 +187,12 @@ public class ProductsView extends Div implements BeforeEnterObserver {
         image.getStyle().set("box-sizing", "border-box");
         image.getElement().appendChild(imagePreview.getElement());
         name = new TextField("Name");
-        author = new TextField("Author");
-        publicationDate = new DatePicker("Publication Date");
-        pages = new TextField("Pages");
-        isbn = new TextField("Isbn");
-        formLayout.add(imageLabel, image, name, author, publicationDate, pages, isbn);
+        //author = new TextField("Author");
+        publicationDate = new DatePicker("Date");
+        //pages = new TextField("Pages");
+        isbn = new TextField("No.");
+        price=new TextField("Price");
+        formLayout.add(imageLabel, image, name, publicationDate, isbn,price);
 
         editorDiv.add(formLayout);
         createButtonLayout(editorLayoutDiv);
@@ -194,7 +205,7 @@ public class ProductsView extends Div implements BeforeEnterObserver {
         buttonLayout.setClassName("button-layout");
         cancel.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        buttonLayout.add(save, cancel);
+        buttonLayout.add(save, cancel,delete);
         editorLayoutDiv.add(buttonLayout);
     }
 

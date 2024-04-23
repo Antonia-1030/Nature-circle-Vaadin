@@ -16,14 +16,10 @@ public class AboutView extends VerticalLayout {
     public AboutView() {
         setSpacing(false);
 
-        Image img = new Image("images/empty-plant.png", "placeholder plant");
-        img.setWidth("200px");
+        Image img = new Image("images/Screenshot 2024-02-13 at 17-45-43 Nature Circle.png", "placeholder plant");
+        img.setWidth("800px");
+        img.setHeight("1000px");
         add(img);
-
-        H2 header = new H2("This place intentionally left empty");
-        header.addClassNames(Margin.Top.XLARGE, Margin.Bottom.MEDIUM);
-        add(header);
-        add(new Paragraph("It’s a place where you can grow your own UI 🤗"));
 
         setSizeFull();
         setJustifyContentMode(JustifyContentMode.CENTER);

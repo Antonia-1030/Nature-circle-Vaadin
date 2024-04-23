@@ -32,18 +32,18 @@ public class ImageGalleryView extends Main implements HasComponents, HasStyle {
     public ImageGalleryView() {
         constructUI();
 
-        imageContainer.add(new ImageGalleryViewCard("Snow mountains under stars",
-                "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"));
-        imageContainer.add(new ImageGalleryViewCard("Snow covered mountain",
-                "https://images.unsplash.com/photo-1512273222628-4daea6e55abb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"));
-        imageContainer.add(new ImageGalleryViewCard("River between mountains",
-                "https://images.unsplash.com/photo-1536048810607-3dc7f86981cb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80"));
-        imageContainer.add(new ImageGalleryViewCard("Milky way on mountains",
-                "https://images.unsplash.com/photo-1515705576963-95cad62945b6?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=750&q=80"));
-        imageContainer.add(new ImageGalleryViewCard("Mountain with fog",
-                "https://images.unsplash.com/photo-1513147122760-ad1d5bf68cdb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"));
-        imageContainer.add(new ImageGalleryViewCard("Mountain at night",
-                "https://images.unsplash.com/photo-1562832135-14a35d25edef?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=815&q=80"));
+        imageContainer.add(new ImageGalleryViewCard("GWC",
+                "https://images-platform.99static.com/rJFFtzr16r47aGPw7-51x-WXiuw=/500x500/top/smart/99designs-contests-attachments/45/45507/attachment_45507391"));
+        imageContainer.add(new ImageGalleryViewCard("sloths",
+                "https://explorewildmadagascar.com/wp-content/uploads/2020/10/logo_opt.png"));
+        imageContainer.add(new ImageGalleryViewCard("Rainforest",
+                "https://th.bing.com/th/id/OIP.DaALsBiyBqHANW_029AKKQAAAA?w=300&h=300&rs=1&pid=ImgDetMain"));
+        imageContainer.add(new ImageGalleryViewCard("wwf",
+                "https://www.thoughtco.com/thmb/xeieMvGEOSvHEndmUASPlHwH5Kc=/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/WWF_logo-58bd98d25f9b58af5cdd493e.jpg"));
+        imageContainer.add(new ImageGalleryViewCard("ocean",
+                "https://media.pagefly.io/file/get/oceana2jpg-1537640935019.jpg"));
+        imageContainer.add(new ImageGalleryViewCard("fahlo",
+                "https://th.bing.com/th/id/OIP.hSnBEVucqu_nNNTzICAd4wAAAA?rs=1&pid=ImgDetMain"));
 
     }
 
@@ -55,21 +55,21 @@ public class ImageGalleryView extends Main implements HasComponents, HasStyle {
         container.addClassNames(AlignItems.CENTER, JustifyContent.BETWEEN);
 
         VerticalLayout headerContainer = new VerticalLayout();
-        H2 header = new H2("Beautiful photos");
+        H2 header = new H2("Organizations");
         header.addClassNames(Margin.Bottom.NONE, Margin.Top.XLARGE, FontSize.XXXLARGE);
-        Paragraph description = new Paragraph("Royalty free photos and pictures, courtesy of Unsplash");
+        Paragraph description = new Paragraph("Causes we support");
         description.addClassNames(Margin.Bottom.XLARGE, Margin.Top.NONE, TextColor.SECONDARY);
         headerContainer.add(header, description);
 
-        Select<String> sortBy = new Select<>();
+        /*Select<String> sortBy = new Select<>();
         sortBy.setLabel("Sort by");
         sortBy.setItems("Popularity", "Newest first", "Oldest first");
-        sortBy.setValue("Popularity");
+        sortBy.setValue("Popularity");*/
 
         imageContainer = new OrderedList();
         imageContainer.addClassNames(Gap.MEDIUM, Display.GRID, ListStyleType.NONE, Margin.NONE, Padding.NONE);
 
-        container.add(headerContainer, sortBy);
+        container.add(headerContainer);
         add(container, imageContainer);
 
     }
